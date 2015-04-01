@@ -91,7 +91,7 @@ EXT_COMMAND(wclrstack,
 					{
 						compareString.assign(frameStr);
 						if (hasArg)
-							if (compareString.find(argString) == std::wstring::npos)
+							if (!g_ExtInstancePtr->MatchPattern(CW2A(compareString.c_str()), CW2A(argString.c_str())))
 								continue;
 						Out("%p %p %S\n", sp, ip, frameStr);
 

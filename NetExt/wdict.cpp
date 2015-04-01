@@ -230,7 +230,6 @@ EXT_COMMAND(wsocket,
 		fields.push_back("isListening");
 		varMap fieldV;
 		DumpFields(curr, fields, 0, &fieldV);
-		
 
 		if (fieldV["m_RightEndPoint"].ObjAddress > 0)
 		{

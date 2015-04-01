@@ -277,7 +277,7 @@ void StackObj::DumpStackObject(PCSTR contains, bool hasArg, bool CacheOnly)
 			if (obj.IsValid() && h >= 0 && g >= 0)
 			{
 				if (hasArg)
-					if (obj.TypeName().find(containsString) == std::wstring::npos)
+					if (!g_ExtInstancePtr->MatchPattern(CW2A(obj.TypeName().c_str()), CW2A(containsString.c_str())))
 						continue;
 				if (!CacheOnly) g_ExtInstancePtr->Dml("<link cmd=\"!wdo %p\">%s=%p</link> %p %3i %2i %10u %S", addr, it->first.c_str(), addr, obj.MethodTable(), h, g, obj.Size(), obj.TypeName().c_str());
 				if (obj.IsString() && !CacheOnly) g_ExtInstancePtr->Out(" %S", obj.String().c_str());
@@ -311,7 +311,7 @@ void StackObj::DumpStackObject(PCSTR contains, bool hasArg, bool CacheOnly)
 				if (obj.IsValid() && h >= 0 && g >= 0)
 				{
 					if (hasArg)
-						if (obj.TypeName().find(containsString) == std::wstring::npos)
+						if (!g_ExtInstancePtr->MatchPattern(CW2A(obj.TypeName().c_str()), CW2A(containsString.c_str())))
 							continue;
 					if (!CacheOnly) g_ExtInstancePtr->Dml("<link cmd=\"!wdo %p\">%p</link> %p %3i %2i %10u %S", addr, addr, obj.MethodTable(), h, g, obj.Size(), obj.TypeName().c_str());
 					if (obj.IsString() && !CacheOnly) g_ExtInstancePtr->Out(" %S", obj.String().c_str());
